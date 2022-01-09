@@ -1,5 +1,4 @@
-db/**
-data/images/**
-
 .vscode
 **/__pycache__/**
+
+data/images/**
