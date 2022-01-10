@@ -23,7 +23,7 @@ class Detector():
                 min_detection_confidence=0.5) as face_mesh:
 
             image = cv2.resize(
-                image, (int(image.shape[1] * 20), int(image.shape[0] * 20)))
+                image, (int(image.shape[1] * 10), int(image.shape[0] * 10)))
             results = face_mesh.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 
             if not results.multi_face_landmarks:

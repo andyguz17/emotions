@@ -26,22 +26,24 @@ class meshFrame():
     def setData(self, path, label, coord="2d"):
 
         distances = []
-
+        fails = 0
+        success = 0
+        
         for i, name in enumerate(os.listdir(f'{path}')):
             img = cv2.imread(f'{path}/' + name)
-            img = cv2.resize(
-                img, (int(img.shape[1] * 0.2), int(img.shape[0] * 0.2)))
             img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
             data = self.mesh.detect(img)
             if (data == []):
+                fails += 1
                 continue
 
+            success += 1
             data = self.features.getDistances(data, coord)
             distances.append(np.array(data))
 
+        print(f'{path} \n\t success: {success} \n\t fails: {fails}')
         distances = pd.DataFrame(distances)
         distances['label'] = label
-        print('done')
 
         return distances
