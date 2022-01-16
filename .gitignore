@@ -2,3 +2,7 @@
 **/__pycache__/**
 
 data/images/**
+models/models/**
+models/NeuralNets/**
+models/DeepNet/**
+**/logs/**
